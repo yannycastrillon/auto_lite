@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  vin: MyString
+  model: MyString
+  make: MyString
+  year: 1
+  times_view: 1
+  pic_url: MyString
+
+two:
+  vin: MyString
+  model: MyString
+  make: MyString
+  year: 1
+  times_view: 1
+  pic_url: MyString
