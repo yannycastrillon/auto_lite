@@ -18,15 +18,13 @@
   <tbody>
     <% @vehicles.each do |vehicle| %>
       <tr>
-        <td><%= vehicle.vin %></td>
-        <td><%= vehicle.model %></td>
-        <td><%= vehicle.make %></td>
-        <td><%= vehicle.year %></td>
-        <td><%= vehicle.times_view %></td>
-        <td><%= vehicle.pic_url %></td>
-        <td><%= link_to 'Show', vehicle %></td>
-        <td><%= link_to 'Edit', edit_vehicle_path(vehicle) %></td>
-        <td><%= link_to 'Destroy', vehicle, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= vehicle['vin'] %></td>
+        <td><%= vehicle['model'] %></td>
+        <td><%= vehicle['make'] %></td>
+        <td><%= vehicle['year'] %></td>
+        <td><%= vehicle['times_view'] %></td>
+        <td><%= vehicle['price'] %></td>
+        <td><%= link_to 'Show', "/vehicles/#{vehicle['vin']}?#{url_params(vehicle)}" %></td>
       </tr>
     <% end %>
   </tbody>

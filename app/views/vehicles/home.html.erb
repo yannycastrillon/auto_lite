@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Home</h1>
+<%= form_tag("/vehicles/search", method: "get") do %>
+  <div class="field">
+    <%= label_tag(:min, "Min Price: ") %>
+    <%= number_field_tag(:min) %>
+  </div>
+
+  <div class="field">
+    <%= label_tag(:max, "Max Price: ") %>
+    <%= number_field_tag(:max) %>
+  </div>
+
+  <div class="field">
+    <%= submit_tag("Search") %>
+  </div>
+<% end %>
+<br>
+
+<%= link_to 'New Vehicle', new_vehicle_path %>
