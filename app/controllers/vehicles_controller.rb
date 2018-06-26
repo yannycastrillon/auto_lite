@@ -1,62 +1,34 @@
 class VehiclesController < ApplicationController
-  before_action :set_vehicle, only: [:show, :edit, :update, :destroy]
+  extend VehicleService
+  before_action :set_vehicle, only: [:show, :update, :destroy]
 
-  # GET /vehicles
-  # GET /vehicles.json
   def index
-    @vehicles = Vehicle.all
+    @vehicles = VehicleService.all_vehicles
   end
 
   def show
   end
 
-  def new
-    @vehicle = Vehicle.new
-  end
-
-  def edit
-  end
-
-  def create
-    @vehicle = Vehicle.new(vehicle_params)
-
-    respond_to do |format|
-      if @vehicle.save
-        format.html { redirect_to @vehicle, notice: 'Vehicle was successfully created.' }
-        format.json { render :show, status: :created, location: @vehicle }
-      else
-        format.html { render :new }
-        format.json { render json: @vehicle.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  def update
-    respond_to do |format|
-      if @vehicle.update(vehicle_params)
-        format.html { redirect_to @vehicle, notice: 'Vehicle was successfully updated.' }
-        format.json { render :show, status: :ok, location: @vehicle }
-      else
-        format.html { render :edit }
-        format.json { render json: @vehicle.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  def destroy
-    @vehicle.destroy
-    respond_to do |format|
-      format.html { redirect_to vehicles_url, notice: 'Vehicle was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+  def home
+    render 'vehicles/home'
   end
 
   private
     def set_vehicle
-      @vehicle = Vehicle.find(params[:id])
+      @vehicle = Vehicle.find_by_vin(params[:id])
+      unless @vehicle
+        @vehicle = create_vehicle
+      end
+    end
+
+    def create_vehicle
+      new_vehicle = Vehicle.new(vehicle_params)
+      new_vehicle.vin = params[:id]
+      new_vehicle.pic_url = params['primary_photo_url']
+      new_vehicle if new_vehicle.save
     end
 
     def vehicle_params
-      params.require(:vehicle).permit(:vin, :model, :make, :year, :times_view, :pic_url)
+      params.permit(:vin, :model, :make, :year, :times_view, :pic_url)
     end
 end

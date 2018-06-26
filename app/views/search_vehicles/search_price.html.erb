@@ -1,0 +1,31 @@
+<h1>SearchVehicles#search</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Vin</th>
+      <th>Model</th>
+      <th>Make</th>
+      <th>Year</th>
+      <th>Times view</th>
+      <th>Pic url</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @search_vehicles.each do |api_vehicle| %>
+      <tr>
+        <td><%= api_vehicle['vin'] %></td>
+        <td><%= api_vehicle['model'] %></td>
+        <td><%= api_vehicle['make'] %></td>
+        <td><%= api_vehicle['year'] %></td>
+        <td><%= api_vehicle['times_view'] %></td>
+        <td><%= api_vehicle['pic_url'] %></td>
+        <td><%= api_vehicle['price'] %></td>
+        <td><%= link_to 'Show', "/vehicles/#{api_vehicle['vin']}?#{url_params(api_vehicle)}" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
