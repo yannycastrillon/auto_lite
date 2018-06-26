@@ -30,4 +30,4 @@
   <%= @vehicle.pic_url %>
 </p>
 
-<%= link_to 'Back', vehicles_path %>
+<%= link_to 'Back', search_price_path(min: session[:min], max: session[:max]) %>
