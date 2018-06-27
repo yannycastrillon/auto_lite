@@ -3,6 +3,10 @@
 ### Description
 A Ruby on Rails "Autolist Lite" app that allows to retrieve auto's information from an API end-point. Furthermore, it provides functionality to search prices ranges.
 
+![](Home_page.png)
+
+![](search_page.png)
+
 ### Endpoint
 The app API accepts **GET** request to the URI **/vehicles/search** and accepts minimum price and maximum price to be able to get a range of autos and display them on the search
 page.
@@ -32,11 +36,11 @@ GET 'localhost:3000/vehicles/:vin'
 ## Key aspects
 * Time invested so far: 6.5 hours.
 * API data to show the information of each auto on the Search and detail page.
-* Basic functionality have test coverage using RSpec. 
+* Basic functionality have test coverage using RSpec.
 
 ## Future requirements
 * Add count of the Viewed X times when clicking on each of the auto's details page.
 * Add validation regarding the searchable fields on the Home page.
 * Add Bootstrap and CSS styling on the pages.
 * Refactor some of the code on the Controllers to keep it DRY.
-
+* Add pagination to the search page.
