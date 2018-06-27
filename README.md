@@ -24,3 +24,4 @@ GET 'localhost:3000/vehicles/:vin'
 ## Instructions to execute code
 * Download the repository to your preferred directory from Github.
 * Open a terminal, go to your proyect's directory and run `bundle install` --> Install all your dependencies gems.
+* Run `rails server` and then go to `localhost:3000/`.
